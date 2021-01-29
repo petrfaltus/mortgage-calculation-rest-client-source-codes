@@ -11,6 +11,10 @@ tasks.withType(JavaCompile) {
    options.encoding = 'UTF-8'
 }
 
+dependencies {
+   compile 'com.googlecode.json-simple:json-simple:1.1.1'
+}
+
 jar {
    manifest {
       attributes 'Main-Class': 'cz.petrfaltus.mortgage_calc_restclient.Program'
