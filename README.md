@@ -5,6 +5,7 @@ Small example console source codes for a calculation of the mortgage. It is the 
 1. clone this repository to your computer
 2. build and run the example **Java** code
 3. compile and run the example **.NET C#** code
+4. run the example **PHP** code
 
 ### 1. Cloning to your computer
 - install [GIT] on your computer
@@ -43,6 +44,13 @@ The subdirectory `csharp` contains prepared Windows batches:
 
 For the JSON serialization and JSON deserialization there is the [Newtonsoft.Json.dll] needed.
 
+### 4. The PHP client source code
+- install [PHP] on your computer
+- set the OS environment `%PHP_HOME%` variable (must exist `"%PHP_HOME%\php.exe"`)
+
+The subdirectory `php` contains prepared Windows batch:
+- `01-run.cmd` - runs the code through the PHP interpreter
+
 ## Versions
 Now in January 2021 I have the computer with **Windows 10 Pro 64bit**, **12GB RAM** and available **50GB free HDD space**
 
@@ -54,6 +62,7 @@ Now in January 2021 I have the computer with **Windows 10 Pro 64bit**, **12GB RA
 | [Gradle Build Tool] | 6.3 | |
 | .NET C# compiler | 4.8.3752.0 | |
 | [Newtonsoft.Json.dll] | 12.0.3.23909 | part of the repository |
+| [PHP] | 7.4.4 | 7.4.4-nts-Win32-vc15-x64 |
 
 ## To do (my plans to the future)
 
@@ -63,3 +72,4 @@ Now in January 2021 I have the computer with **Windows 10 Pro 64bit**, **12GB RA
 [Apache Maven]: <https://maven.apache.org/>
 [Gradle Build Tool]: <https://gradle.org/>
 [Newtonsoft.Json.dll]: <https://www.newtonsoft.com/>
+[PHP]: <https://www.php.net/>
