@@ -7,5 +7,10 @@ namespace MortgageCalcRestClient
         public string error_string { get; set; }
 
         public CalcData data { get; set; }
+
+        public RestReply()
+        {
+            error_code = -999;
+        }
     }
 }

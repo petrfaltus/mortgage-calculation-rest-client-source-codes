@@ -3,6 +3,10 @@ package cz.petrfaltus.mortgage_calc_restclient;
 import static java.lang.System.out;
 
 public class Program {
+    public static final String MESSAGE_ERROR_CODING_JSON = "error coding the request JSON";
+    public static final String MESSAGE_ERROR_CONTACTING_SERVICE = "error contacting the REST service";
+    public static final String MESSAGE_ERROR_DECODING_JSON = "error decoding the reply JSON";
+    public static final String MESSAGE_RECEIVED_ERROR = "received error";
 
     public static void main(String[] args) {
         double loan_amount = 350000.0;
@@ -11,12 +15,12 @@ public class Program {
 
         String requestJsonQuery = Json.codeCalculation(loan_amount, loan_term_months, interest_rate_percent_pa);
         if (requestJsonQuery == null) {
-            out.println(" - error coding of request JSON");
+            out.println(" - " + MESSAGE_ERROR_CODING_JSON);
             return;
         }
         String replyJsonQuery = Web.request(requestJsonQuery);
         if (replyJsonQuery == null) {
-            out.println(" - error sending POST web query");
+            out.println(" - " + MESSAGE_ERROR_CONTACTING_SERVICE);
             return;
         }
         CalcData replyData = Json.decodeResultCalculation(replyJsonQuery);
@@ -24,9 +28,9 @@ public class Program {
             String errorString = Json.getLastErrorString();
 
             if (errorString != null) {
-                out.println(" - replied error '" + errorString + "'");
+                out.println(" - " + MESSAGE_RECEIVED_ERROR + ": " + errorString);
             } else {
-                out.println(" - error decoding of reply JSON");
+                out.println(" - " + MESSAGE_ERROR_DECODING_JSON);
             }
 
             return;

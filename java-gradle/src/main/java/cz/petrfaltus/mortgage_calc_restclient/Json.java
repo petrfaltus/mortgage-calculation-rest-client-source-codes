@@ -66,6 +66,15 @@ public class Json {
         return retString;
     }
 
+    private static double castToDouble(Object obj) {
+        if (obj instanceof Long)
+        {
+            return (double)(long) obj;
+        }
+
+        return (double) obj;
+    }
+
     public static CalcData decodeResultCalculation(String resultJson) {
         CalcData retData = null;
         lastErrorString = null;
@@ -83,30 +92,15 @@ public class Json {
                 Object obj;
 
                 obj = data.get(INTEREST_RATE_PERCENT_PM);
-                if (obj instanceof Long)
-                {
-                    retData.interest_rate_percent_pm = (long) obj;
-                } else {
-                    retData.interest_rate_percent_pm = (double) obj;
-                }
+                retData.interest_rate_percent_pm = castToDouble(obj);
 
                 retData.discont_factor = (double) data.get(DISCONT_FACTOR);
 
                 obj = data.get(MONTHLY_PAYMENT);
-                if (obj instanceof Long)
-                {
-                    retData.monthly_payment = (long) obj;
-                } else {
-                    retData.monthly_payment = (double) obj;
-                }
+                retData.monthly_payment = castToDouble(obj);
 
                 obj = data.get(TOTAL_PAID);
-                if (obj instanceof Long)
-                {
-                    retData.total_paid = (long) obj;
-                } else {
-                    retData.total_paid = (double) obj;
-                }
+                retData.total_paid = castToDouble(obj);
 
                 JSONArray dataScenario = (JSONArray) data.get(SCENARIO);
 
@@ -119,36 +113,16 @@ public class Json {
                     CalcOneMonth calcOneMonth = new CalcOneMonth();
 
                     obj = jsonObjectNext.get(PAYMENT);
-                    if (obj instanceof Long)
-                    {
-                        calcOneMonth.payment = (long) obj;
-                    } else {
-                        calcOneMonth.payment = (double) obj;
-                    }
+                    calcOneMonth.payment = castToDouble(obj);
 
                     obj = jsonObjectNext.get(INTEREST);
-                    if (obj instanceof Long)
-                    {
-                        calcOneMonth.interest = (long) obj;
-                    } else {
-                        calcOneMonth.interest = (double) obj;
-                    }
+                    calcOneMonth.interest = castToDouble(obj);
 
                     obj = jsonObjectNext.get(AMORTIZATION);
-                    if (obj instanceof Long)
-                    {
-                        calcOneMonth.amortization = (long) obj;
-                    } else {
-                        calcOneMonth.amortization = (double) obj;
-                    }
+                    calcOneMonth.amortization = castToDouble(obj);
 
                     obj = jsonObjectNext.get(ACCOUNT_BALANCE);
-                    if (obj instanceof Long)
-                    {
-                        calcOneMonth.account_balance = (long) obj;
-                    } else {
-                        calcOneMonth.account_balance = (double) obj;
-                    }
+                    calcOneMonth.account_balance = castToDouble(obj);
 
                     retData.scenario.add(calcOneMonth);
                 }

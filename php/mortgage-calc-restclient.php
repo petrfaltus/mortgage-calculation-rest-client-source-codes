@@ -10,6 +10,10 @@ spl_autoload_register(function($class_name)
   require_once $class_source_file_path;
 });
 
+const MESSAGE_ERROR_CONTACTING_SERVICE = "error contacting the REST service";
+const MESSAGE_ERROR_DECODING_JSON = "error decoding the reply JSON";
+const MESSAGE_RECEIVED_ERROR = "received error";
+
 $loan_amount = 350000.0;
 $loan_term_months = 12;
 $interest_rate_percent_pa = 9.00;
@@ -19,7 +23,7 @@ $requestJson = tJson::codeCalculation($loan_amount, $loan_term_months, $interest
 $replyJson = tWeb::request($requestJson);
 if ($replyJson === null)
 {
-  echo " - error sending POST web query".PHP_EOL;
+  echo " - ".MESSAGE_ERROR_CONTACTING_SERVICE.PHP_EOL;
   return;
 }
 
@@ -30,11 +34,11 @@ if ($replyIData === null)
 
   if ($errorString != null)
   {
-    echo " - replied error '".$errorString."'".PHP_EOL;
+    echo " - ".MESSAGE_RECEIVED_ERROR.": ".$errorString.PHP_EOL;
   }
   else
   {
-    echo " - error decoding of reply JSON".PHP_EOL;
+    echo " - ".MESSAGE_ERROR_DECODING_JSON.PHP_EOL;
   }
 
   return;
