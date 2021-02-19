@@ -1,6 +1,4 @@
 using System;
-using System.Net;
-using System.Text;
 
 using Newtonsoft.Json;
 
@@ -8,19 +6,11 @@ namespace MortgageCalcRestClient
 {
     public class Program
     {
-        private static readonly string URL_ADDRESS = "http://api.petrfaltus.net/mortgage_law/json/1.0";
-        private static readonly Encoding encoding = Encoding.UTF8;
-        private static readonly string USER_AGENT = "Petr Faltus C# Mortgage calculation REST client";
-
         private static readonly string MESSAGE_ERROR_CONTACTING_SERVICE = "error contacting the REST service";
         private static readonly string MESSAGE_RECEIVED_ERROR = "received error";
 
         public static void Main(string[] args)
         {
-            WebClient client = new WebClient();
-            client.Encoding = encoding;
-            client.Headers.Add("user-agent", USER_AGENT);
-
             RestRequest restRequest = new RestRequest();
             restRequest.loan_amount = 350000.0;
             restRequest.loan_term_months = 12;
@@ -31,7 +21,7 @@ namespace MortgageCalcRestClient
             string restReplyJsonCalculation;
             try
             {
-                restReplyJsonCalculation = client.UploadString(URL_ADDRESS, restRequestJsonCalculation);
+                restReplyJsonCalculation = Web.Request(restRequestJsonCalculation);
             }
             catch (Exception)
             {
