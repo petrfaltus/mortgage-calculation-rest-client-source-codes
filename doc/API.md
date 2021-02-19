@@ -165,3 +165,75 @@ Returns one mortgage calculation for the loan amount, the loan term and the inte
         | --------       | -----       | ----    |
         | `error_code`   | number <> 0 | integer |
         | `error_string` | message     | string  |
+
+---
+## Communication diagnostics query
+Returns detected communication properties for the REST request.
+
+-   **URL**
+    <http://api.petrfaltus.net/mortgage_law/json/1.0>
+
+-   **Method**
+    `POST`
+
+-   **URL Params**
+    None
+
+-   **Form Data Params**
+    None
+
+-   **Raw Data Params**
+    -   **Required**
+        | Variable        | Value | Type    |
+        | --------        | ----- | ----    |
+        | `method_number` | 0     | integer |
+
+    -   **Optional**
+        None
+
+    -   **Example JSON Request**
+        ```javascript
+        {
+          "method_number" : 0
+        }
+        ```
+
+-   **Success Response**
+    -   **Code**
+        200 OK
+
+    -   **Content**
+        | Variable         | Value                     | Type    |
+        | --------         | -----                     | ----    |
+        | `error_code`     | 0                         | integer |
+        | `error_string`   | "ok"                      | string  |
+        | `request_method` | request method            | string  |
+        | `proxy_ip`       | IP of the proxy           | string  |
+        | `proxy_software` | proxy software            | string  |
+        | `client_ip`      | IP of the client          | string  |
+        | `user_agent`     | user agent header line    | string  |
+        | `user_language`  | user language header line | string  |
+
+    -   **Example JSON Reply**
+        ```javascript
+        {
+          "error_code" : 0,
+          "error_string" : "ok",
+          "request_method" : "POST",
+          "proxy_ip" : "",
+          "proxy_software" : "",
+          "client_ip" : "85.70.117.166",
+          "user_agent" : "Petr Faltus Java Mortgage calculation REST client",
+          "user_language" : ""
+        }
+        ```
+
+-   **Error Response**
+    -   **Code**
+        200 OK
+
+    -   **Content**
+        | Variable       | Value       | Type    |
+        | --------       | -----       | ----    |
+        | `error_code`   | number <> 0 | integer |
+        | `error_string` | message     | string  |
