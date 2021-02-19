@@ -2,42 +2,42 @@
 Application interface description
 (c) Petr Faltus 2021
 
-**Calculation request**
+**Mortgage calculation request**
 ----
-Returns json data for mortgage calculation from the API.
+Returns one mortgage calculation for the loan amount, the loan term and the interest rate from the API.
 
 * **URL**
   http://api.petrfaltus.net/mortgage_law/json/1.0
 
-* **Method:**
+* **Method**
   `POST`
 
 * **URL Params**
   None
 
-* **Data Params**
-  * **Required:**
+* **Raw Data Params**
+  * **Required**
     `method_number : 1`
     `loan_amount : [loan amount decimal number or integer]`
     `loan_term_months : [loan term months integer]`
     `interest_rate_percent_pa : [interest rate % p.a. decimal number or integer]`
 
-  * **Optional:**
+  * **Optional**
     None
 
-* **Example JSON Request Data:**
-  ```javascript
-  {
-    "method_number" : 1,
-    "loan_amount" : 350000.0,
-    "loan_term_months" : 12,
-    "interest_rate_percent_pa" : 9.00
-  }
+  * **Example JSON Request**
+    ```javascript
+    {
+      "method_number" : 1,
+      "loan_amount" : 350000.0,
+      "loan_term_months" : 12,
+      "interest_rate_percent_pa" : 9.00
+    }
   ```
 
-* **Success Response:**
-  * **Code:** 200 OK
-    **Content:**
+* **Success Response**
+  * **Code** 200 OK
+    **Content**
     ```javascript
     {
       "error_code" : 0,
@@ -125,9 +125,9 @@ Returns json data for mortgage calculation from the API.
     }
     ```
 
-* **Error Response:**
-  * **Code:** 200 OK
-    **Content:**
+* **Error Response**
+  * **Code** 200 OK
+    **Content**
     ```javascript
     {
       "error_code" : integer,
