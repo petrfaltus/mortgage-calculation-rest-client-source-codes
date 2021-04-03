@@ -27,8 +27,8 @@ if ($replyJson === null)
   return;
 }
 
-$replyIData = tJson::decodeResultCalculation($replyJson);
-if ($replyIData === null)
+$replyData = tJson::decodeResultCalculation($replyJson);
+if ($replyData === null)
 {
   $errorString = tJson::getLastErrorString();
 
@@ -44,20 +44,20 @@ if ($replyIData === null)
   return;
 }
 
-echo " - interest rate % p.m.: ".$replyIData[tJson::INTEREST_RATE_PERCENT_PM].PHP_EOL;
-echo " - discont factor: ".$replyIData[tJson::DISCONT_FACTOR].PHP_EOL;
-echo " - monthly payment: ".$replyIData[tJson::MONTHLY_PAYMENT].PHP_EOL;
-echo " - total paid: ".$replyIData[tJson::TOTAL_PAID].PHP_EOL;
+echo " - interest rate % p.m.: ".$replyData[tJson::INTEREST_RATE_PERCENT_PM].PHP_EOL;
+echo " - discont factor: ".$replyData[tJson::DISCONT_FACTOR].PHP_EOL;
+echo " - monthly payment: ".$replyData[tJson::MONTHLY_PAYMENT].PHP_EOL;
+echo " - total paid: ".$replyData[tJson::TOTAL_PAID].PHP_EOL;
 
-foreach ($replyIData[tJson::SCENARIO] as $index => $oneMonth)
+foreach ($replyData[tJson::SCENARIO] as $index => $oneMonth)
 {
   echo PHP_EOL;
 
   echo " - month number: ".($index + 1).PHP_EOL;
-  echo "   - payment: ".  $oneMonth[tJson::PAYMENT].PHP_EOL;
-  echo "   - interest: ".  $oneMonth[tJson::INTEREST].PHP_EOL;
-  echo "   - amortization: ".  $oneMonth[tJson::AMORTIZATION].PHP_EOL;
-  echo "   - account balance: ".  $oneMonth[tJson::ACCOUNT_BALANCE].PHP_EOL;
+  echo "   - payment: ".$oneMonth[tJson::PAYMENT].PHP_EOL;
+  echo "   - interest: ".$oneMonth[tJson::INTEREST].PHP_EOL;
+  echo "   - amortization: ".$oneMonth[tJson::AMORTIZATION].PHP_EOL;
+  echo "   - account balance: ".$oneMonth[tJson::ACCOUNT_BALANCE].PHP_EOL;
 }
 
 ?>
