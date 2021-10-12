@@ -28,19 +28,19 @@ if replyData == None:
 
     exit()
 
-print(" - interest rate % p.m.: " + str(replyData[Json.INTEREST_RATE_PERCENT_PM]))
-print(" - discont factor: " + str(replyData[Json.DISCONT_FACTOR]))
-print(" - monthly payment: " + str(replyData[Json.MONTHLY_PAYMENT]))
-print(" - total paid: " + str(replyData[Json.TOTAL_PAID]))
+print(" - interest rate % p.m.:", replyData[Json.INTEREST_RATE_PERCENT_PM])
+print(" - discont factor:", replyData[Json.DISCONT_FACTOR])
+print(" - monthly payment:", replyData[Json.MONTHLY_PAYMENT])
+print(" - total paid:", replyData[Json.TOTAL_PAID])
 
 index = 1
 for oneMonth in replyData[Json.SCENARIO]:
     print()
 
-    print(" - month number: " + str(index))
-    print("   - payment: " + str(oneMonth[Json.PAYMENT]))
-    print("   - interest: " + str(oneMonth[Json.INTEREST]))
-    print("   - amortization: " + str(oneMonth[Json.AMORTIZATION]))
-    print("   - account balance: " + str(oneMonth[Json.ACCOUNT_BALANCE]))
+    print(" - month number:", index)
+    print("   - payment:", oneMonth[Json.PAYMENT])
+    print("   - interest:", oneMonth[Json.INTEREST])
+    print("   - amortization:", oneMonth[Json.AMORTIZATION])
+    print("   - account balance:", oneMonth[Json.ACCOUNT_BALANCE])
 
     index = index + 1
