@@ -22,6 +22,8 @@ class tWeb
     curl_setopt($crequest, CURLOPT_RETURNTRANSFER, true);
 
     $output = curl_exec($crequest);
+    curl_close($crequest);
+
     if ($output === false)
     {
       return null;
